@@ -4,7 +4,7 @@
 ## 10. Implementation of programs using pointer arithmetic.
 # Ex.No:21
   Implement a C program to demonstrate call by value and call by reference by swapping two integers using separate functions.
-# Date : 
+
 # Aim:
  To implement a C program that illustrates the difference between call by value and call by reference by swapping two integer variables using two separate functions.
 # Algorithm:
@@ -39,7 +39,62 @@
 ### Step 12: 
   Stop
 # Program:
+#include <stdio.h>
+
+void swapv(int x, int y)
+{
+   
+  int temp;
+
+  temp = x;
+
+  x = y;
+
+  y = temp;
+
+  printf("After swap (Call by Value): x = %d, y = %d\n", x, y);
+
+}
+
+void swapr(int *x, int *y)
+{
+  
+   int temp;
+  
+   temp = *x;
+  
+   *x = *y;
+  
+   *y = temp;
+  
+   printf("After swap (Call by Reference): x = %d, y = %d\n", *x, *y);
+
+}
+
+int main()
+
+{
+  
+  int a = 10, b = 20;
+
+   printf("Before swap (Call by Value): a = %d, b = %d\n", a, b);
+
+   swapv(a, b);
+  
+   printf("After function call: a = %d, b = %d\n\n", a, b);
+
+  printf("Before swap (Call by Reference): a = %d, b = %d\n", a, b);
+
+  swapr(&a, &b);
+  
+  printf("After function call: a = %d, b = %d\n", a, b);
+
+  return 0;
+
+}
 # Output:
+<img width="792" height="538" alt="image" src="https://github.com/user-attachments/assets/fbb69c4e-e613-4233-9890-eaa965a52153" />
+
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -48,7 +103,7 @@
 # IAPR-5- Module 5 - FoC
 # Ex.No:22
   Implement a C program to generate the Fibonacci series using a recursive function. The program should accept a positive integer n and display the first n terms of the Fibonacci sequence.
-# Date : 
+# Date : 12.03.2026
 # Aim:
   To implement a C program that uses a recursive function to generate and display the Fibonacci series for a given number of terms.
 # Algorithm:
@@ -77,7 +132,44 @@
 ### Step 10:
   Stop
 # Program:
+
+#include <stdio.h>
+
+int fibo(int x)
+{
+  
+  if (x == 0 || x == 1)
+  
+  return x;
+  
+  else
+  
+   return fibo(x - 1) + fibo(x - 2);
+
+}
+
+int main()
+
+{
+ 
+ int n = 5, i;
+
+ printf("Fibonacci series:\n");
+ 
+ for (i = 0; i < n; i++)
+  
+{
+  
+printf("%d ", fibo(i));
+    
+}
+
+  return 0;
+
+}
 # Output:
+<img width="896" height="392" alt="image" src="https://github.com/user-attachments/assets/b618b36d-7584-46a6-bb9f-1a79a6e14d10" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -86,7 +178,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-5- Module 5 - FoC
 # Ex.No:23
    Implement a C program to demonstrate recursion by printing a sequence of even or odd numbers from a given lower limit to an upper limit, with each recursive call progressing by 2.
-# Date : 
+# Date : 12.03.2026
 # Aim:
   To implement a C program that uses a recursive function to print even or odd numbers in a specified range based on the starting value provided by the user.
 # Algorithm:
@@ -119,7 +211,37 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+#include <stdio.h>
+
+void printEvenOdd(int cur, int limit)
+{
+    
+  if (cur > limit)
+  
+  return;
+
+  printf("%d ", cur);
+  
+  printEvenOdd(cur + 2, limit);
+
+}
+
+int main()
+
+{
+    
+  int lower = 2, upper = 10;
+
+  printf("Even numbers:\n");
+  
+  printEvenOdd(lower, upper);
+
+  return 0;
+
+}
 # Output:
+<img width="910" height="287" alt="image" src="https://github.com/user-attachments/assets/bcf5fca3-fbb5-4291-8e30-d02a5e7ef413" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -161,7 +283,53 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+#include <stdio.h>
+
+#include <stdlib.h>
+
+int main()
+
+{
+    
+  int *ptr, n = 5, i, sum = 0;
+
+  ptr = (int *)calloc(n, sizeof(int));
+
+if (ptr == NULL)
+{
+        
+  printf("Memory allocation failed");
+  
+  return 0;
+    
+}
+ 
+  for (i = 0; i < n; i++)
+    
+  {
+      
+  scanf("%d", ptr + i);
+   
+   }
+
+  for (i = 0; i < n; i++)
+
+ {
+        
+  sum += *(ptr + i);
+    
+}
+
+ printf("Sum = %d", sum);
+
+  free(ptr);
+    
+  return 0;
+
+}
 # Output:
+<img width="887" height="371" alt="image" src="https://github.com/user-attachments/assets/261b1f37-29e6-4ac9-9fc1-83e054c51c8b" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -197,6 +365,37 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+#include <stdio.h>
+
+void displayArray(int *arr, int size)
+
+{
+    
+  int i;
+  
+  printf("Array elements are:\n");
+  
+  for (i = 0; i < size; i++)
+    
+{
+    
+ printf("%d ", *(arr + i));
+   
+}
+
+}
+
+int main()
+{
+  int arr[5] = {1, 2, 3, 4, 5};
+
+  displayArray(arr, 5);
+
+  return 0;
+
+}
 # Output:
+<img width="887" height="297" alt="image" src="https://github.com/user-attachments/assets/502adced-cc92-4bcc-894c-221fdd65b0b9" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
